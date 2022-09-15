@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Feedback from './Feedback/Feedback';
+import Section from './Section/Section';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
+import Statistics from './Statistics/Statistics';
 
 class App extends Component {
   state = {
@@ -35,6 +37,10 @@ class App extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const percentage = this.countPositiveFeedbackPercentage();
+
     return (
       <div
         style={{
@@ -48,12 +54,18 @@ class App extends Component {
         }}
       >
         React homework template
-        <Feedback
-          state={this.state}
-          onClick={this.addFeedback}
-          total={this.countTotalFeedback}
-          percentage={this.countPositiveFeedbackPercentage}
-        ></Feedback>
+        <Section title="Please leave feedback">
+          <FeedbackOptions onClick={this.addFeedback} />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={percentage}
+          />
+        </Section>
       </div>
     );
   }
