@@ -1,18 +1,18 @@
-import { ButtonsBlock, Button } from './FeedbackOptions.styled';
+import { ButtonsBlock } from './FeedbackOptions.styled';
+import FeedbackButton from './Button/Button';
 
-const FeedbackOptions = ({ onClick }) => {
-  console.log(onClick);
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <ButtonsBlock>
-      <Button type="button" onClick={() => onClick('good')}>
-        Good
-      </Button>
-      <Button type="button" onClick={() => onClick('neutral')}>
-        Neutral
-      </Button>
-      <Button type="button" onClick={() => onClick('bad')}>
-        Bad
-      </Button>
+      {options.map(option => {
+        return (
+          <FeedbackButton
+            key={option}
+            option={option}
+            onLeaveFeedback={onLeaveFeedback}
+          />
+        );
+      })}
     </ButtonsBlock>
   );
 };

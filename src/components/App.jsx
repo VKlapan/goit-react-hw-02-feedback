@@ -21,7 +21,7 @@ class App extends Component {
   };
 
   addFeedback = feedback => {
-    switch (feedback) {
+    switch (feedback.option) {
       case 'good':
         this.setState(prevState => ({ good: prevState.good + 1 }));
         break;
@@ -37,6 +37,7 @@ class App extends Component {
   };
 
   render() {
+    const options = Object.keys(this.state);
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const percentage = this.countPositiveFeedbackPercentage();
@@ -55,7 +56,10 @@ class App extends Component {
       >
         React homework template
         <Section title="Please leave feedback">
-          <FeedbackOptions onClick={this.addFeedback} />
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.addFeedback}
+          />
         </Section>
         <Section title="Statistics">
           <Statistics

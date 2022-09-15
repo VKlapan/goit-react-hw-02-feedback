@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const SectionBlock = styled.div`
-  max-width: 500px;
+  width: 500px;
   padding: 20px;
   font-size: 14px;
 `;
