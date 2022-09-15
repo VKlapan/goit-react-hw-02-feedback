@@ -10,6 +10,16 @@ class App extends Component {
     bad: 0,
   };
 
+  styleDefault = {
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 40,
+    color: '#010101',
+  };
+
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
   };
@@ -43,17 +53,7 @@ class App extends Component {
     const percentage = this.countPositiveFeedbackPercentage();
 
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
+      <div style={this.styleDefault}>
         React homework template
         <Section title="Please leave feedback">
           <FeedbackOptions
